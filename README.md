@@ -1,6 +1,6 @@
 # Frontend Mentor - Planets fact site
 
-![Design preview for the Planets fact site coding challenge](./preview.jpg)
+![Design preview for the Planets fact site coding challenge](./planets-fact-site/preview.jpg)
 
 ## Welcome! 👋
 
