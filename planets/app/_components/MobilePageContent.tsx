@@ -12,7 +12,7 @@ interface PageContentProps {
     temp: string;
 }
 
-export default function PageContent(
+export default function MobilePageContent(
     { imgSrc, planet, desc, wikiLink, rotation, revolution, radius, temp } : PageContentProps) {
     return (
         <>

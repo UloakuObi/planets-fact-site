@@ -15,12 +15,12 @@ export function DesktopNavbar() {
 export function TabletNavbar() {
 
     return (
-        <header className={`hidden sm:block flex-col gap-y-6 items-center border-b border-color-hover`}>
-            <h1 className={`text-[1.75rem] tracking-tight font-light w-fit mx-auto`}>THE PLANETS</h1>
+        <header className={`hidden sm:block flex-col mt-6 gap-y-6 items-center border-b border-color-hover`}>
+            <h1 className={`text-[1.75rem] tracking-tight font-semibold w-fit mx-auto`}>THE PLANETS</h1>
             <div className="w-fit mx-auto">
                 <Planets 
                     navStyles="gap-8"
-                    linkStyles="py-12 tracking-[0.098em] hover:border-b-3 hover:border-b-amber-500"/>
+                    linkStyles="py-10 tracking-[0.098em] hover:border-b-3 hover:border-b-amber-500"/>
             </div>
         </header>
     )

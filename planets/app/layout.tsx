@@ -23,9 +23,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en"
+      suppressHydrationWarning={true} data-lt-installed="true">
       <body
-        className={`${antonio.className} ${spartan.className} antialiased dark`}
+        className={`${antonio.className} ${spartan.className} antialiased dark
+        data-new-gr-c-s-check-loaded="14.1280.0"
+-       data-gr-ext-installed=""`}
       >
         {children}
       </body>

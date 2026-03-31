@@ -3,7 +3,7 @@
 import { useState } from "react"
 import HamburgerMenu from "../_components/HamburgerMenu"
 import { MobileNavbar } from "../_components/HamburgerMenu"
-import { DesktopNavbar, TabletNavbar } from "../_components/DesktopMenu"
+import { DesktopNavbar, TabletNavbar } from "../_components/Navbar"
 
 export default function DesignsPage() {
 

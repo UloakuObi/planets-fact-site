@@ -1,7 +1,10 @@
+"use client"
+
 import { Dispatch, SetStateAction } from "react";
 import { Circle } from 'lucide-react'
 import Image from "next/image"
 import Link from "next/link";
+import { useSearchParams } from "next/navigation";
 
 interface HamburgerMenuProps {
     isMenuOpen: boolean;
@@ -42,7 +45,7 @@ export default function HamburgerMenu({ isMenuOpen, setIsMenuOpen, menuItems }: 
                 <TitleBar toggleMenu={toggleMenu}/>
             </header>
             {isMenuOpen && 
-            <nav className="p-4">
+            <nav className="p-4 w-full absolute z-10 top-[75px] bg-background">
                { menuLinks }
             </nav>}
         </>
@@ -76,17 +79,46 @@ interface MobileNavbarProps {
 }
 
 export function MobileNavbar({ planet_color }: MobileNavbarProps) {
+    const searchParams = useSearchParams()
+    const currentView = searchParams.get("view") || "overview"
     return (
         <div className="mx-4 flex justify-between border-b border-color-hover">
-            <button className={`uppercase text-[0.56rem] py-4 text-white/70 hover:text-white hover:border-b-3 hover:border-b-amber-400 ${planet_color}`}>
+
+            <Link href="?view=overview"
+                className={`uppercase text-[0.56rem] tracking-[2px] py-4 
+                text-white/70 hover:text-white focus:text-white hover:border-b-3 hover:border-b-amber-400 
+                ${currentView === "overview" ? "border-b-3 text-white" : ""}`}
+                style={
+                    currentView === "overview"
+                        ? { borderBottomColor: `var(--color-${planet_color})` }
+                        : {}
+                    }>
                 Overview
-            </button>
-            <button className="uppercase text-[0.56rem] py-4 text-white/70 hover:text-white hover:border-b-3 hover:border-b-amber-400">
+            </Link>
+
+            <Link href="?view=structure"
+                className={`uppercase text-[0.56rem] tracking-[2px] py-4 
+                text-white/70 hover:text-white focus:text-white hover:border-b-3 hover:border-b-amber-400 
+                 ${currentView === "structure" ? "border-b-3" : ""}`}
+                 style={
+                    currentView === "structure"
+                        ? { borderBottomColor: `var(--color-${planet_color})` }
+                        : {}
+                    }>
                 Structure
-            </button>
-            <button className="uppercase text-[0.56rem] py-4 text-white/70 hover:text-white hover:border-b-3 hover:border-b-amber-400">
+            </Link>
+
+            <Link href="?view=surface"
+                className={`uppercase text-[0.56rem] tracking-[2px] py-4 
+                text-white/70 hover:text-white focus:text-white hover:border-b-3 hover:border-b-amber-400 
+                ${currentView === "surface" ? "border-b-3" : ""}`}
+                style={
+                    currentView === "surface"
+                        ? { borderBottomColor: `var(--color-${planet_color})` }
+                        : {}
+                    }>
                 Surface
-            </button>
+            </Link>
         </div>
     )
 }
