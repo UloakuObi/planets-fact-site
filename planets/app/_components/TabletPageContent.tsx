@@ -1,5 +1,4 @@
 "use client"
-import { TabletNavbar } from "./Navbar"
 import Link from "next/link"
 import Image from "next/image"
 import { useSearchParams } from "next/navigation"
@@ -20,13 +19,12 @@ export const TabletPageContent = (
     : TabletPageProps) => {
         
     return (
-        <main className="hidden md:block">
-            <TabletNavbar/>
+        <main className="hidden md:block lg:hidden">
             <Image 
                 src={imgSrc}
                 alt={`planet ${planet}`}
-                width={184}
-                height={184}
+                width={280}
+                height={280}
                 className="mt-35 mb-25 mx-auto"/>
 
             <div className="mx-15">
@@ -39,10 +37,10 @@ export const TabletPageContent = (
                 </div>
 
                 <section className="flex justify-between">
-                <FeatureBox label="Rotation time" value={rotation}/>
-                <FeatureBox label="rotation time" value={revolution}/>
-                <FeatureBox label="radius" value={radius}/>
-                <FeatureBox label="Average Temp." value={temp}/>
+                    <FeatureBox label="rotation time" value={rotation}/>
+                    <FeatureBox label="revolution time" value={revolution}/>
+                    <FeatureBox label="radius" value={radius}/>
+                    <FeatureBox label="Average Temp." value={temp}/>
                 </section>
              </div>
         </main>
@@ -53,17 +51,19 @@ export const TabletPageContent = (
 interface FeatureBoxProps {
     label: string;
     value: string;
+    className?: string;
 }
 
-const FeatureBox = ({label, value} : FeatureBoxProps) => {
+export const FeatureBox = ({label, value} : FeatureBoxProps) => {
     return (
-        <div className="flex flex-col w-39.5 h-22 py-4 my-6 gap-y-2 pl-4 
+        <div className="flex flex-col md:w-39.5 lg:w-[clamp(12rem,18vw,20rem)] md:h-22 lg:h-32 
+            py-4 my-6 gap-y-2 pl-4 
             font-extralight border border-color-hover">
-            <p className="uppercase text-[0.5rem] font-extralight text-white/80 
-                tracking-[0.75px]">
+            <p className="uppercase md:text-[0.5rem] lg:text-[0.6875rem] font-extralight 
+            text-white/80 tracking-[0.75px]">
                 {label}
             </p>
-            <h3 className="uppercase text-[1.5rem] tracking-tight text-bold">
+            <h3 className="uppercase md:text-[1.5rem] lg:text-[2.5rem] tracking-tight text-bold">
                 {value}
             </h3>
         </div>
@@ -74,21 +74,22 @@ interface PlanetDescProps {
     planet: string;
     desc: string;
     link: string;
+    className?: string;
 }
 
-const PlanetDesc = ({ planet, desc, link } : PlanetDescProps ) => {
+export const PlanetDesc = ({ planet, desc, link } : PlanetDescProps ) => {
     return (
-        <div className="w-84.75">
-            <h2 className="text-[2.5rem] mb-4">{planet}</h2>
+        <div className="w-84.75 lg:w-86.5 lg:h-81.5">
+            <h2 className="md:text-[2.5rem] lg:text-[5rem] mb-4">{planet}</h2>
             <p className="text-white/90 font-extralight 
-                tracking-[0.0625rem] mb-8 text-[0.687rem]">
+                tracking-[0.0625rem] mb-8 text-[0.687rem] lg:text-[0.875rem]">
                 {desc}
             </p>
             <span className="mb-4 text-white/60 font-light flex 
-                items-center gap-1 text-[0.75rem]">
+                items-center gap-1 text-[0.75rem] lg:text-[0.875rem]">
                 Source : 
                 <Link href={link}
-                    className="font-semibold underline text-[0.75rem]">
+                    className="font-semibold underline text-[0.75rem] lg:text-[0.875rem]">
                     Wikipedia
                 </Link>
                 <Image
@@ -104,17 +105,19 @@ const PlanetDesc = ({ planet, desc, link } : PlanetDescProps ) => {
 
 interface PageNavProps {
     planet_color: string;
+    className?: string;
 }
 
-const PageNav = ({planet_color} : PageNavProps) => {
+export const PageNav = ({planet_color} : PageNavProps) => {
 
     const searchParams = useSearchParams()
     const currentView = searchParams.get("view") || "overview"
 
     return (
-        <div className="flex flex-col gap-y-3 h-39 my-auto">
+        <div className="flex flex-col gap-y-3 h-39 lg:h-44 md:my-auto">
             <Link href="?view=overview" className="uppercase border border-color-hover
-                w-70.25 h-10 pl-4 pt-3.5 tracking-[2px] text-[0.57rem]"
+                md:w-70.25 lg:w-87.5 md:h-10 lg:h-12 pl-4 md:pt-3.5 lg:pt-4.25 tracking-[2px] 
+                md:text-[0.57rem] lg:text-[0.75rem]"
                 style={
                     currentView === "overview"
                         ? { backgroundColor: `var(--color-${planet_color})` }
@@ -125,7 +128,8 @@ const PageNav = ({planet_color} : PageNavProps) => {
             </Link>
 
             <Link href="?view=structure" className="uppercase border border-color-hover
-                w-70.25 h-10 pl-4 pt-3.5 tracking-[2px] text-[0.57rem]"
+                md:w-70.25 lg:w-87.5 md:h-10 lg:h-12 pl-4 md:pt-3.5 lg:pt-4.25 tracking-[2px] 
+                md:text-[0.57rem] lg:text-[0.75rem]"
                 style={
                     currentView === "structure"
                         ? { backgroundColor: `var(--color-${planet_color})` }
@@ -136,7 +140,8 @@ const PageNav = ({planet_color} : PageNavProps) => {
             </Link>
 
             <Link href="?view=surface" className="uppercase border border-color-hover
-                w-70.25 h-10 pl-4 pt-3.5 tracking-[2px] text-[0.57rem]"
+                md:w-70.25 lg:w-87.5 md:h-10 lg:h-12 pl-4 md:pt-3.5 lg:pt-4.25 tracking-[2px] 
+                md:text-[0.57rem] lg:text-[0.75rem]"
                 style={
                     currentView === "surface"
                         ? { backgroundColor: `var(--color-${planet_color})` }

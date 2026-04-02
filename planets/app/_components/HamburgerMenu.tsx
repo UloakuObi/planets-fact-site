@@ -21,7 +21,8 @@ export default function HamburgerMenu({ isMenuOpen, setIsMenuOpen, menuItems }: 
     const menuLinks = menuItems.map(menu => 
         (
             <Link key={menu} 
-                href="" 
+                href={`/${menu}`} 
+                onClick={toggleMenu}
                 className="py-4 flex items-center justify-between border-b border-color-hover">
                 <span className="flex justify-center gap-x-4">
                     <Circle 
@@ -45,7 +46,7 @@ export default function HamburgerMenu({ isMenuOpen, setIsMenuOpen, menuItems }: 
                 <TitleBar toggleMenu={toggleMenu}/>
             </header>
             {isMenuOpen && 
-            <nav className="p-4 w-full absolute z-10 top-[75px] bg-background">
+            <nav className="p-4 w-full absolute z-10 top-18.75 bg-background">
                { menuLinks }
             </nav>}
         </>
@@ -82,7 +83,7 @@ export function MobileNavbar({ planet_color }: MobileNavbarProps) {
     const searchParams = useSearchParams()
     const currentView = searchParams.get("view") || "overview"
     return (
-        <div className="mx-4 flex justify-between border-b border-color-hover">
+        <div className="px-4 flex justify-between border-b border-color-hover">
 
             <Link href="?view=overview"
                 className={`uppercase text-[0.56rem] tracking-[2px] py-4 

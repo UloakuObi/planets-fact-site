@@ -19,8 +19,8 @@ export default function MobilePageContent(
             <Image
                 src={imgSrc}
                 alt={`planet ${planet}`}
-                width={111}
-                height={111}
+                width={150}
+                height={150}
                 className="my-6 mx-auto"
                 />
             <div className="text-[0.6875rem] text-center font-extralight pt-5 mx-10
@@ -31,7 +31,7 @@ export default function MobilePageContent(
                     link={wikiLink}
                 />
 
-                <section className="flex flex-col gap-3 pt-4">
+                <section className="flex flex-col gap-3 pt-4 mb-6">
                     <FeatureBox
                         label="Rotation Time"
                         value={rotation}
